@@ -20,6 +20,7 @@ use Magento\Sales\Api\Data\OrderInterface;
 class Data extends AbstractHelper
 {
     public const NOVAPOSHTA_BRANCH_METHOD_CODE = 'novaposhtabranch_novaposhtabranch';
+    public const NOVAPOSHTA_POSHTOMAT_METHOD_CODE = 'novaposhtaposhtomat_novaposhtaposhtomat';
 
     /**
      * @var GetShippingPoint
@@ -92,7 +93,8 @@ class Data extends AbstractHelper
     public function isNovaposhtaBranchMethod(OrderInterface $order): bool
     {
         $methodCode = $order->getShippingMethod();
-        if ($methodCode === self::NOVAPOSHTA_BRANCH_METHOD_CODE) {
+        if ($methodCode === self::NOVAPOSHTA_BRANCH_METHOD_CODE
+            || $methodCode === self::NOVAPOSHTA_POSHTOMAT_METHOD_CODE) {
             return true;
         }
 
